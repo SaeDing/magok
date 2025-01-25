@@ -180,7 +180,6 @@ resetButton.addEventListener("click", () => {
   waveGoldDisplay.textContent = ""; // 텍스트 초기화
 });
 
-
 saveButton.addEventListener("click", () => {
   const waveInput = document.getElementById("wave");
   const goldInput = document.getElementById("gold");
@@ -211,8 +210,11 @@ saveButton.addEventListener("click", () => {
 
   // waveGoldDisplay 위치 설정 (중앙에서 50px 내려오기)
   waveGoldDisplay.style.position = 'absolute';  // 위치를 절대값으로 설정
-  waveGoldDisplay.style.top = `${(mapHeight / 2) - 50}px`; // mapContainer의 중간에서 50px 내려옴
-  waveGoldDisplay.style.left = `${(mapWidth / 2) - (waveGoldDisplay.offsetWidth / 2)}px`; // 가로 중앙으로 위치
+  waveGoldDisplay.style.top = `${(mapHeight / 2) - 10}px`; // mapContainer의 중간에서 50px 내려옴
+
+  // 가로 중앙으로 위치 (텍스트 너비를 고려)
+  const waveGoldDisplayWidth = waveGoldDisplay.clientWidth;
+  waveGoldDisplay.style.left = `${(mapWidth / 2) - (waveGoldDisplayWidth / 2)}px`;
 
   // 텍스트 크기와 위치 조정
   waveGoldDisplay.style.transform = 'translateX(-50%)'; // 정확히 가운데로 위치시킴
@@ -235,6 +237,7 @@ saveButton.addEventListener("click", () => {
     waveGoldDisplay.textContent = "";
   });
 });
+
 
 
 
