@@ -201,14 +201,22 @@ saveButton.addEventListener("click", () => {
   const waveGoldDisplay = document.getElementById("wave-gold-display");
   waveGoldDisplay.textContent = displayText;
 
-  // 텍스트 위치 중앙으로 변경
-  waveGoldDisplay.style.top = 'calc(50% + 30px)'; // 30px 내려서 중앙으로 조정
-  waveGoldDisplay.style.left = '50%'; // 가운데로 조정
+  // 텍스트 색상을 흰색으로 강제 설정
+  waveGoldDisplay.style.color = 'white';  // 흰색으로 설정
+
+  // map-container의 크기 가져오기
+  const mapContainer = document.getElementById("map-container");
+  const mapWidth = mapContainer.offsetWidth;
+  const mapHeight = mapContainer.offsetHeight;
+
+  // waveGoldDisplay 위치 설정 (중앙에서 50px 내려오기)
+  waveGoldDisplay.style.position = 'absolute';  // 위치를 절대값으로 설정
+  waveGoldDisplay.style.top = `${(mapHeight / 2) - 50}px`; // mapContainer의 중간에서 50px 내려옴
+  waveGoldDisplay.style.left = `${(mapWidth / 2) - (waveGoldDisplay.offsetWidth / 2)}px`; // 가로 중앙으로 위치
+
+  // 텍스트 크기와 위치 조정
   waveGoldDisplay.style.transform = 'translateX(-50%)'; // 정확히 가운데로 위치시킴
 
-  const mapContainer = document.getElementById("map-container");
-
-  // map-container 내 모든 요소 포함하여 캡처
   html2canvas(mapContainer, {
     scrollX: 0, // 스크롤 방지
     scrollY: 0,
@@ -227,6 +235,8 @@ saveButton.addEventListener("click", () => {
     waveGoldDisplay.textContent = "";
   });
 });
+
+
 
 
 
