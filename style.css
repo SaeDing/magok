@@ -186,3 +186,15 @@ header {
   outline: none;
   box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
 }
+
+
+
+#wave-gold-display {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 23px; /* 기존보다 30% 큰 크기 */
+  font-weight: bold;
+  color: white; /* 흰색으로 변경 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 가독성을 높이기 위한 그림자 효과 추가 */
+}
