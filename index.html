@@ -17,12 +17,21 @@
     <div class="controls">
       <button id="reset-button">초기화</button>
       <button id="save-button">PNG로 저장</button>
+      <div class="input-container">
+        <label for="wave">WAVE:</label>
+        <input type="number" id="wave" placeholder="Enter value" />
+        <label for="gold">Gold:</label>
+        <input type="number" id="gold" placeholder="Enter value" />
+      </div>
     </div>
 
     <!-- 컨텐츠 -->
     <div class="container">
       <!-- 맵 -->
       <div class="map-container" id="map-container">
+        <!-- 맵 컨테이너 내에 wave와 gold를 표시할 영역 추가 -->
+<div id="wave-gold-display" style="position: absolute; top: 20px; right: 20px; font-size: 18px; font-weight: bold; color: #333;"></div>
+
         <div class="drop-zone" style="top: 240px; left: 280px;"></div>
         <div class="drop-zone" style="top: 325px; left: 280px;"></div>
         <div class="drop-zone" style="top: 410px; left: 280px;"></div>

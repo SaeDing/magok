@@ -126,8 +126,8 @@ dropZones.forEach(zone => {
           const img = document.createElement("img");
           img.src = selectedImage;
           img.alt = "dropped-image";
-          img.style.width = "100%";
-          img.style.height = "100%";
+          img.style.width = "130%";
+          img.style.height = "130%";
 
           zone.appendChild(img);
 
@@ -170,10 +170,27 @@ resetButton.addEventListener("click", () => {
   });
   selectedImage = null; // 선택 상태 초기화
 });
-
-
-// PNG 저장 버튼 기능 (중복 제거)
+// PNG 저장 버튼 기능 수정
 saveButton.addEventListener("click", () => {
+  const waveInput = document.getElementById("wave");
+  const goldInput = document.getElementById("gold");
+  const waveValue = waveInput.value.trim();
+  const goldValue = goldInput.value.trim();
+
+  // wave와 gold 값이 있을 경우에만 표시
+  let displayText = "";
+  if (waveValue) {
+    displayText += `WAVE: ${waveValue}`;
+  }
+  if (goldValue) {
+    if (displayText) displayText += " | "; // WAVE 뒤에 구분자 추가
+    displayText += `Gold: ${goldValue}`;
+  }
+
+  // wave와 gold 값을 표시할 위치에 텍스트 삽입
+  const waveGoldDisplay = document.getElementById("wave-gold-display");
+  waveGoldDisplay.textContent = displayText;
+
   const mapContainer = document.getElementById("map-container");
 
   // map-container 내 모든 요소 포함하여 캡처
@@ -190,8 +207,12 @@ saveButton.addEventListener("click", () => {
     link.download = "map.png";
     link.href = canvas.toDataURL(); // 캡처한 이미지 URL을 다운로드 링크로 설정
     link.click();
+    
+    // 다운로드 후 텍스트를 초기화
+    waveGoldDisplay.textContent = "";
   });
 });
+
 
 const base64Image = 'data:image/png;base64,...';  // Base64로 변환된 이미지
 const imgElement = document.createElement('img');
