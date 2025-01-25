@@ -247,3 +247,7 @@ if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
   // 모든 컨텐츠의 상호작용을 차단 (선택 사항)
   document.body.style.overflow = "hidden";
 }
+// 스크립트 내에 추가: 모바일 화면 크기 체크
+if (window.innerWidth <= 768) { // 화면 너비가 768px 이하일 때 모바일로 판단
+  document.getElementById('mobile-warning').style.display = 'flex'; // 모바일 경고 메시지 표시
+}
