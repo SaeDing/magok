@@ -189,10 +189,15 @@ header {
 
 #wave-gold-display {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 23px; /* 기존보다 30% 큰 크기 */
+  top: 50%; /* 화면 중간으로 위치 */
+  left: 50%; /* 화면 중간으로 위치 */
+  transform: translate(-50%, -50%); /* 정확히 중앙에 위치 */
+  font-size: 30px; /* 기존보다 30% 큰 크기 */
   font-weight: bold;
   color: white; /* 흰색으로 변경 */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 가독성을 높이기 위한 그림자 효과 추가 */
+  z-index: 100; /* 다른 요소들 위에 나타나게 하기 */
 }
+
+
+

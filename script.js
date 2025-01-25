@@ -181,8 +181,6 @@ resetButton.addEventListener("click", () => {
 });
 
 
-
-// PNG 저장 버튼 기능 수정
 saveButton.addEventListener("click", () => {
   const waveInput = document.getElementById("wave");
   const goldInput = document.getElementById("gold");
@@ -202,6 +200,11 @@ saveButton.addEventListener("click", () => {
   // wave와 gold 값을 표시할 위치에 텍스트 삽입
   const waveGoldDisplay = document.getElementById("wave-gold-display");
   waveGoldDisplay.textContent = displayText;
+
+  // 텍스트 위치 중앙으로 변경
+  waveGoldDisplay.style.top = 'calc(50% + 30px)'; // 30px 내려서 중앙으로 조정
+  waveGoldDisplay.style.left = '50%'; // 가운데로 조정
+  waveGoldDisplay.style.transform = 'translateX(-50%)'; // 정확히 가운데로 위치시킴
 
   const mapContainer = document.getElementById("map-container");
 
@@ -224,6 +227,7 @@ saveButton.addEventListener("click", () => {
     waveGoldDisplay.textContent = "";
   });
 });
+
 
 
 const base64Image = 'data:image/png;base64,...';  // Base64로 변환된 이미지
