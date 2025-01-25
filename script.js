@@ -171,18 +171,8 @@ resetButton.addEventListener("click", () => {
   selectedImage = null; // 선택 상태 초기화
 });
 
-// PNG 저장 버튼 기능
-saveButton.addEventListener("click", () => {
-  const mapContainer = document.getElementById("map-container");
-  html2canvas(mapContainer).then(canvas => {
-      const link = document.createElement("a");
-      link.download = "map.png";
-      link.href = canvas.toDataURL();
-      link.click();
-  });
-});
 
-// PNG 저장 버튼 기능
+// PNG 저장 버튼 기능 (중복 제거)
 saveButton.addEventListener("click", () => {
   const mapContainer = document.getElementById("map-container");
 
@@ -194,6 +184,7 @@ saveButton.addEventListener("click", () => {
     windowHeight: document.documentElement.offsetHeight,
     scale: 2, // 고해상도 출력
     useCORS: true, // 외부 이미지 CORS 지원
+    allowTaint: true,  // tainted 상태에서도 캡처 허용
   }).then(canvas => {
     const link = document.createElement("a");
     link.download = "map.png";
@@ -201,18 +192,6 @@ saveButton.addEventListener("click", () => {
     link.click();
   });
 });
-
-
-html2canvas(mapContainer, {
-  allowTaint: true,  // tainted 상태에서도 캡처 허용
-  useCORS: true, 
-}).then(canvas => {
-  const link = document.createElement("a");
-  link.download = "map.png";
-  link.href = canvas.toDataURL();
-  link.click();
-});
-
 
 const base64Image = 'data:image/png;base64,...';  // Base64로 변환된 이미지
 const imgElement = document.createElement('img');
