@@ -180,6 +180,7 @@ resetButton.addEventListener("click", () => {
   waveGoldDisplay.textContent = ""; // 텍스트 초기화
 });
 
+
 saveButton.addEventListener("click", () => {
   const waveInput = document.getElementById("wave");
   const goldInput = document.getElementById("gold");
@@ -200,45 +201,35 @@ saveButton.addEventListener("click", () => {
   const waveGoldDisplay = document.getElementById("wave-gold-display");
   waveGoldDisplay.textContent = displayText;
 
-  // 텍스트 색상을 흰색으로 강제 설정
-  waveGoldDisplay.style.color = 'white';  // 흰색으로 설정
+  // 텍스트 색상 강제 설정 (한 번만 설정)
+  waveGoldDisplay.style.color = "white"; // 흰색
 
-  // map-container의 크기 가져오기
+  // 위치를 CSS에서 고정적으로 유지하도록 수정
+  waveGoldDisplay.style.position = "absolute"; // 위치는 절대값
+  waveGoldDisplay.style.top = "calc(1% + 33px)"; // 이전보다 20px 더 아래로 설정
+  waveGoldDisplay.style.left = "62%"; // 화면 가로 중앙
+  waveGoldDisplay.style.transform = "translateX(-70%)"; // 항상 가로 중앙에 고정
+
+  // 맵을 캡처
   const mapContainer = document.getElementById("map-container");
-  const mapWidth = mapContainer.offsetWidth;
-  const mapHeight = mapContainer.offsetHeight;
-
-  // waveGoldDisplay 위치 설정 (중앙에서 50px 내려오기)
-  waveGoldDisplay.style.position = 'absolute';  // 위치를 절대값으로 설정
-  waveGoldDisplay.style.top = `${(mapHeight / 2) - 10}px`; // mapContainer의 중간에서 50px 내려옴
-
-  // 가로 중앙으로 위치 (텍스트 너비를 고려)
-  const waveGoldDisplayWidth = waveGoldDisplay.clientWidth;
-  waveGoldDisplay.style.left = `${(mapWidth / 2) - (waveGoldDisplayWidth / 2)}px`;
-
-  // 텍스트 크기와 위치 조정
-  waveGoldDisplay.style.transform = 'translateX(-50%)'; // 정확히 가운데로 위치시킴
-
   html2canvas(mapContainer, {
-    scrollX: 0, // 스크롤 방지
+    scrollX: 0,
     scrollY: 0,
-    windowWidth: document.documentElement.offsetWidth, // 현재 뷰포트 크기 기준
+    windowWidth: document.documentElement.offsetWidth,
     windowHeight: document.documentElement.offsetHeight,
-    scale: 2, // 고해상도 출력
-    useCORS: true, // 외부 이미지 CORS 지원
-    allowTaint: true,  // tainted 상태에서도 캡처 허용
-  }).then(canvas => {
+    scale: 2,
+    useCORS: true,
+    allowTaint: true,
+  }).then((canvas) => {
     const link = document.createElement("a");
     link.download = "map.png";
-    link.href = canvas.toDataURL(); // 캡처한 이미지 URL을 다운로드 링크로 설정
+    link.href = canvas.toDataURL(); // 이미지 URL 생성
     link.click();
 
     // 다운로드 후 텍스트를 초기화
     waveGoldDisplay.textContent = "";
   });
 });
-
-
 
 
 
