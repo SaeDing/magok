@@ -2,52 +2,52 @@
 const imageFiles = [
   "우주인 3단 마딜.png",
   "보루 변신 물딜.png",
-  "그린딩딩 물딜.png",
-  "슈퍼시바 마딜.png",
+  "라이양 변신 마딜.png",
   "빅토리어스 마딜.png",
   "미믹 물딜.png",
   "눈보라 예티 변신 마딜.png",
-  "돌팔이 마딜.png",
+  "슈퍼시바 마딜.png",
   "죽음의 기사 물딜.png",
-  "라이양 마딜.png",
-  "라이양 변신 마딜.png",
+
   "캔드리 물딜.png",
+  "새싹이 물딜.png",
   "눈보라 예티 마딜.png",
   "해골룡 변신 마딜.png",
+  "개굴 단장 변신 마딜.png",
+  "그린딩딩 물딜.png",
   "로큰롤스 마딜.png",
   "메카 좀비 마딜.png",
-  "메카콩 마딜.png",
-  "미라씨 물딜.png",
-  "개굴 단장 변신 마딜.png",
-  "빅헤드 물딜.png",
-  "새싹이 물딜.png",
-  "샤키 물딜.png",
   "선인장 건맨 물딜.png",
-  "스리슬쩍냥 물딜.png",
-  "크레이지 핫도그 물딜.png",
+  "메카콩 마딜.png",
   "스시 선생 물딜.png",
-  "식빵 복서 물딜.png",
-  "악마 토끼 마딜.png",
-    "캔드리 물딜.png",
-  "역병의사 마딜.png",
+  "카우보이 밥 물딜.png",
+  "할로윈퀸 마딜.png",
   "오우거 전사 물딜.png",
+  "돌팔이 마딜.png",
+  "미라씨 물딜.png",
+  "빅헤드 물딜.png",
+  "꼬꼬질라 물딜.png",
+  "포크몬 물딜.png",
+  "악마 토끼 마딜.png",
+  "역병의사 마딜.png",
+  "샤키 물딜.png",
+  "스리슬쩍냥 물딜.png",
+  "해골 궁수 물딜.png",
+  "식빵 복서 물딜.png",
+  "크레이지 핫도그 물딜.png",
   "오크라이더 물딜.png",
+  "라이양 마딜.png",
   "잭 오 마딜.png",
   "잭 오 변신 마딜.png",
   "전투 달팽이 물딜.png",
   "전투 달팽이 변신 물딜.png",
-  "카우보이 밥 물딜.png",
   "데드베어 마딜.png",
   "보루 물딜.png",
   "드라큐 마딜.png",
   "드라큐 변신 마딜.png",
   "크레이지 핫도그 변신 물딜.png",
-  "포크몬 물딜.png",
   "프랑키 물딜.png",
-  "할로윈퀸 마딜.png",
-  "해골 궁수 물딜.png",
   "해골룡 마딜.png",
-  "꼬꼬질라 물딜.png",
   "개굴 단장 마딜.png",
   "우주인 1단 마딜.png",
   "우주인 2단 마딜.png"
@@ -234,9 +234,16 @@ saveButton.addEventListener("click", () => {
 
 
 
-const base64Image = 'data:image/png;base64,...';  // Base64로 변환된 이미지
 const imgElement = document.createElement('img');
 imgElement.src = base64Image;
 document.body.appendChild(imgElement);
 
 
+// 모바일 디바이스 감지
+if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+  const mobileWarning = document.getElementById("mobile-warning");
+  mobileWarning.style.display = "flex"; // 모바일 경고 메시지 표시
+
+  // 모든 컨텐츠의 상호작용을 차단 (선택 사항)
+  document.body.style.overflow = "hidden";
+}
